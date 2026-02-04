@@ -10,7 +10,7 @@ This script automates the process of uploading audio files to the Yoto "My Cards
 - **Playlist Management:**
   - Asks for the **Playlist Name** at the start.
   - Automatically fills in the name.
-  - Automatically clicks "Create" to **save** the playlist at the end.
+  - **Manual Save:** Pauses at the end so you can verify everything and click "Create" yourself.
 - **Random Icons:** Automatically cycles through every uploaded track and assigns a **random icon** to it, so you don't have to set them manually!
 
 ## Requirements
@@ -34,17 +34,27 @@ This script automates the process of uploading audio files to the Yoto "My Cards
 
 ## Usage
 
-1.  Run the script:
+The process is split into two steps to ensure your files are saved safely.
+
+### Step 1: Upload & Create
+
+1.  Run the script without arguments:
     ```bash
     python yoto_uploader.py
     ```
-2.  When prompted, enter:
-    - The **Name** you want for the Playlist.
-    - The **Full Path** to the folder containing your audio files.
-3.  The browser will open (do not close it).
-    - It will log in, navigate to the editor, and start uploading.
-    - Once uploads are done, it will automatically assign random icons to each track.
-    - Finally, it will click "Create" to save.
+2.  Enter the **Playlist Name** and **Audio Folder**.
+3.  The browser will upload your files.
+4.  **Important:** Wait for uploads to finish, then click **Create** manually in the browser to save the playlist.
+5.  **Copy the URL** of the new playlist (e.g., `https://my.yotoplay.com/card/xxxxx/edit`) and press Enter to close.
+
+### Step 2: Assign Random Icons
+
+1.  Run the script providing the Playlist URL:
+    ```bash
+    python yoto_uploader.py "https://my.yotoplay.com/card/xxxxx/edit"
+    ```
+2.  The script will log in, navigate to that playlist, and assign unique random icons to all tracks.
+3.  Once done, click **Update** (or Save) manually.
 
 ## Important Notes
 
