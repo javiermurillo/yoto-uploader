@@ -69,6 +69,12 @@ def upload_chunk(page: Page, chunk_files: list[Path], chunk_index: int, total_ch
 
 def main():
     try:
+        # Get playlist name from user
+        playlist_name = input("Enter playlist name: ").strip()
+        while not playlist_name:
+            print("Playlist name cannot be empty.")
+            playlist_name = input("Enter playlist name: ").strip()
+
         email, password = get_credentials()
         folder_input = input("Enter path to audio folder: ").strip()
         # Remove quotes if user dragged/dropped folder
@@ -108,13 +114,22 @@ def main():
             # User confirmed we can go directly here after login
             page.goto("https://my.yotoplay.com/card/edit")
             
+            # 2.5 Fill Playlist Name
+            print(f"Setting playlist name: {playlist_name}")
+            page.fill("input[placeholder='Playlist name']", playlist_name)
+            
             # 3. Batch Upload
             for i, chunk in enumerate(chunks, 1):
                 upload_chunk(page, chunk, i, total_chunks)
             
-            print("\nCarga completa. Presiona Enter en la terminal para cerrar...")
-            # Optional: Check if 'Create' button is enabled now
-            # page.is_enabled("button.create-btn")
+            # 4. Save/Create
+            print("All chunks uploaded. Saving playlist...")
+            page.click("button.create-btn")
+            
+            print("Waiting for save to complete...")
+            page.wait_for_timeout(5000)
+            
+            print("\nCarga completa y guardada! Presiona Enter en la terminal para cerrar...")
             input()
             browser.close()
 
