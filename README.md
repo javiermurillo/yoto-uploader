@@ -1,43 +1,52 @@
 # Yoto Audio Uploader
 
-Este script automatiza la subida de archivos de audio a la plataforma "My Cards" de Yoto. Está diseñado específicamente para uso personal, para subir los audiolibros y música para las tarjetas de tu hijo.
+This script automates the process of uploading audio files to the Yoto "My Cards" platform. It is specifically designed for personal use to easily upload audiobooks and music for your child's cards.
 
-## Funcionalidades
+## Features
 
-- **Subida por Lotes:** Sube archivos de 3 en 3 para evitar saturar la plataforma.
-- **Soporte de Formatos:** Acepta `.mp3`, `.m4a`, `.wav` y `.m4b`.
-- **Estabilidad:** Usa métodos directos para evitar errores de interfaz (como botones que se mueven).
-- **Nombre de Playlist:** (Próximamente) Te permite nombrar la playlist y guarda los cambios automáticamente.
+- **Batch Upload:** Uploads files in chunks of 3 to avoid overwhelming the platform.
+- **Format Support:** Supports `.mp3`, `.m4a`, `.wav`, and `.m4b`.
+- **Robustness:** Uses direct file input methods to avoid UI stability issues.
+- **Playlist Management:**
+  - Asks for the **Playlist Name** at the start.
+  - Automatically fills in the name.
+  - Automatically clicks "Create" to **save** the playlist at the end.
+- **Random Icons:** Automatically cycles through every uploaded track and assigns a **random icon** to it, so you don't have to set them manually!
 
-## Requisitos
+## Requirements
 
 1.  **Python 3.12+**
-2.  **Playwright:** Necesario para controlar el navegador.
+2.  **Playwright:** Required for browser automation.
 
-## Instalación
+## Installation
 
-1.  Instalar las dependencias:
+1.  Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```
-2.  Instalar los navegadores de Playwright:
+2.  Install Playwright browsers:
     ```bash
     playwright install chromium
     ```
-3.  Configurar tus credenciales:
-    - Copia el archivo de ejemplo: `cp .env.example .env`
-    - Edita `.env` y pon tu email y contraseña de Yoto.
+3.  Configure your credentials:
+    - Copy the example environment file: `cp .env.example .env`
+    - Edit `.env` and enter your Yoto email and password.
 
-## Uso
+## Usage
 
-1.  Ejecuta el script:
+1.  Run the script:
     ```bash
     python yoto_uploader.py
     ```
-2.  Ingresa la **ruta completa** de la carpeta que contiene los archivos de audio cuando se te pida.
-3.  El navegador se abrirá y verás el proceso. **No cierres la ventana** hasta que el script termine.
+2.  When prompted, enter:
+    - The **Name** you want for the Playlist.
+    - The **Full Path** to the folder containing your audio files.
+3.  The browser will open (do not close it).
+    - It will log in, navigate to the editor, and start uploading.
+    - Once uploads are done, it will automatically assign random icons to each track.
+    - Finally, it will click "Create" to save.
 
-## Notas Importantes
+## Important Notes
 
-- Este script es para **uso personal**.
-- Si la plataforma de Yoto cambia su diseño, es posible que el script necesite actualizaciones.
+- This script is for **personal use**.
+- If the Yoto platform updates its UI, this script might need adjustments (e.g., selectors for icons or buttons).

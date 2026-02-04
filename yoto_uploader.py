@@ -67,6 +67,62 @@ def upload_chunk(page: Page, chunk_files: list[Path], chunk_index: int, total_ch
     
     print(f"  -> Lote {chunk_index} completado (Tiempo de espera finalizado).")
 
+def randomize_icons(page: Page):
+    """Assigns a random icon to each uploaded track."""
+    print("\n--- Asignando iconos aleatorios ---")
+    import random
+    
+    # 1. Identify all track icons on the main page
+    # The selector provided is: img.trackIcon with alt="Choose icon"
+    try:
+        # Wait for the first icon to appear
+        page.wait_for_selector("img.trackIcon[alt='Choose icon']", timeout=10000)
+    except:
+        print("warning: No icons found to update.")
+        return
+
+    # Select all icons that are for choosing a new icon
+    icons = page.query_selector_all("img.trackIcon[alt='Choose icon']")
+    print(f"Found {len(icons)} tracks to update.")
+
+    for i, icon in enumerate(icons, 1):
+        try:
+            print(f"  -> Updating icon for track {i}...")
+            # Click the icon to open dialog
+            icon.click()
+            
+            # Wait for dialog to open
+            # Selector for dialog: div[role="dialog"]
+            page.wait_for_selector("div[role='dialog']", state="visible", timeout=5000)
+            
+            # Wait for icons in dialog to load
+            # Selector from user: div[role="dialog"] img.trackIcon
+            dialog_icons_selector = "div[role='dialog'] img.trackIcon"
+            page.wait_for_selector(dialog_icons_selector, timeout=5000)
+            
+            # Get all available icons in the dialog
+            available_icons = page.query_selector_all(dialog_icons_selector)
+            
+            if available_icons:
+                # Pick one random icon
+                chosen_icon = random.choice(available_icons)
+                chosen_icon.click()
+                
+                # Wait for dialog to close
+                page.wait_for_selector("div[role='dialog']", state="hidden", timeout=5000)
+            else:
+                print("    -> No icons found in dialog, pressing Escape.")
+                page.keyboard.press("Escape")
+
+            # Small pause to be gentle
+            time.sleep(0.5)
+            
+        except Exception as e:
+            print(f"    -> Failed to update icon {i}: {e}")
+            # Ensure we close dialog if stuck open
+            page.keyboard.press("Escape")
+
+
 def main():
     try:
         # Get playlist name from user
@@ -122,6 +178,9 @@ def main():
             for i, chunk in enumerate(chunks, 1):
                 upload_chunk(page, chunk, i, total_chunks)
             
+            # 3.5 Randomize Icons
+            randomize_icons(page)
+
             # 4. Save/Create
             print("All chunks uploaded. Saving playlist...")
             page.click("button.create-btn")
