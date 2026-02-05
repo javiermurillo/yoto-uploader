@@ -41,7 +41,7 @@ def chunk_list(data, size):
 
 def upload_chunk(page: Page, chunk_files: list[Path], chunk_index: int, total_chunks: int):
     """Handles the upload of a single chunk of files."""
-    print(f"Subiendo lote {chunk_index} de {total_chunks}...")
+    print(f"Uploading chunk {chunk_index} of {total_chunks}...")
     
     file_paths = [str(f.absolute()) for f in chunk_files]
     
@@ -50,29 +50,29 @@ def upload_chunk(page: Page, chunk_files: list[Path], chunk_index: int, total_ch
     try:
         page.set_input_files("#upload", file_paths)
     except Exception as e:
-        print(f"  -> Error subiendo archivos directamente: {e}")
-        print("  -> Intentando método alternativo (Click)...")
+        print(f"  -> Error uploading files directly: {e}")
+        print("  -> Attempting alternative method (Click)...")
         with page.expect_file_chooser() as fc_info:
             page.click("label:has-text('Add audio')")
         file_chooser = fc_info.value
         file_chooser.set_files(file_paths)
 
     # --- LOGIC CORE: Wait for upload completion ---
-    print(f"  -> Esperando procesamiento del lote {chunk_index}...")
+    print(f"  -> Waiting for chunk {chunk_index} processing...")
     
     # Validation relaxation: File names often change/shorten on the platform.
     # Instead of strict name checking, we rely on a generous wait and visual progress.
     # We wait a bit longer to be safe since we removed the strict check.
     time.sleep(10) 
     
-    print(f"  -> Lote {chunk_index} completado (Tiempo de espera finalizado).")
+    print(f"  -> Chunk {chunk_index} completed (Wait time finished).")
 
 def wait_for_processing(page: Page, timeout: int = 600):
     """
     Waits for the 'Create' button to be enabled, which indicates that 
     server-side processing (transcoding/analysis) is complete.
     """
-    print("\n--- Verificando estado del procesamiento ---")
+    print("\n--- Verifying processing status ---")
     start_time = time.time()
     
     # We poll every few seconds
@@ -80,11 +80,11 @@ def wait_for_processing(page: Page, timeout: int = 600):
         # Check if the Create button is enabled
         # The selector is button.create-btn
         if page.is_enabled("button.create-btn"):
-            print("  -> Procesamiento completo (Botón Crear habilitado).")
+            print("  -> Processing complete (Create button enabled).")
             return
         
         elapsed = int(time.time() - start_time)
-        print(f"  -> Esperando que termine el procesamiento... ({elapsed}s)")
+        print(f"  -> Waiting for processing to finish... ({elapsed}s)")
         
         # Optional: Try to identify any "Processing" text to show status
         # We assume common terms like "Processing", "Transcoding", "Analysing" might be visible
@@ -92,17 +92,17 @@ def wait_for_processing(page: Page, timeout: int = 600):
             # Quick check for typical status text (case insensitive search via regex could be better but heavy)
             content = page.content().lower()
             if "processing" in content or "transcoding" in content or "analyzing" in content:
-                print("     (Detectado texto de estado: Procesando/Analizando...)")
+                print("     (Status text detected: Processing/Analyzing...)")
         except:
             pass
 
         time.sleep(5)
     
-    print("Warning: Tiempo de espera agotado. Intentando continuar de todos modos...")
+    print("Warning: Timeout reached. Attempting to proceed anyway...")
 
 def randomize_icons(page: Page):
     """Assigns a random unique icon to each uploaded track."""
-    print("\n--- Asignando iconos aleatorios únicos ---")
+    print("\n--- Assigning unique random icons ---")
     import random
     
     # 0. Dismiss Cookie Banner if present (it interferes with dialog detection)
@@ -232,7 +232,7 @@ import sys
 
 def run_upload_mode(page: Page, email: str, password: str):
     """Mode 1: Upload tracks and Create playlist."""
-    print("\n=== MODO DE CARGA ===")
+    print("\n=== UPLOAD MODE ===")
     
     # Inputs
     playlist_name = input("Enter playlist name: ").strip()
@@ -264,12 +264,12 @@ def run_upload_mode(page: Page, email: str, password: str):
     page.fill("input[name='password']", password)
     page.click("button[type='submit']")
     
-    print("Esperando inicio de sesión...")
+    print("Waiting for login...")
     try:
         page.wait_for_url("**/my-account", timeout=60000)
     except Exception:
-        print("\n⚠️  Parece que el inicio de sesión está tardando o apareció un CAPTCHA.")
-        input("    Presiona Enter en esta terminal una vez que hayas iniciado sesión correctamente...")
+        print("\n⚠️  Login seems to be taking a while or CAPTCHA appeared.")
+        input("    Press Enter in this terminal once you have logged in successfully...")
 
     # 2. Navigate
     print("Navigating to Playlist Editor...")
@@ -287,20 +287,20 @@ def run_upload_mode(page: Page, email: str, password: str):
     wait_for_processing(page)
     
     # 6. Manual Save
-    print("\n--- CARGA COMPLETADA ---")
-    print("Los archivos se han subido. Por favor:")
-    print("1. Verifica que no haya spinners de carga.")
-    print("2. Haz click en 'Create' manualmente para guardar la playlist.")
-    print("3. Una vez guardada, copia la URL de la página de edición (algo como .../card/XXXX/edit) para usarla en el paso 2.")
+    print("\n--- UPLOAD COMPLETED ---")
+    print("Files have been uploaded. Please:")
+    print("1. Verify there are no loading spinners.")
+    print("2. Click 'Create' manually to save the playlist.")
+    print("3. Once saved, copy the URL of the edit page (something like .../card/XXXX/edit) to use in step 2.")
     
-    print("\nPresiona Enter para finalizar y cerrar el navegador...")
+    print("\nPress Enter to finish and close the browser...")
     input()
 
 
 def run_icon_mode(page: Page, email: str, password: str, edit_url: str):
     """Mode 2: Assign random icons to an existing playlist URL."""
-    print(f"\n=== MODO DE ICONOS ===")
-    print(f"URL Objetivo: {edit_url}")
+    print(f"\n=== ICON MODE ===")
+    print(f"Target URL: {edit_url}")
     
     # 1. Login
     print("Logging in...")
@@ -309,15 +309,15 @@ def run_icon_mode(page: Page, email: str, password: str, edit_url: str):
     page.fill("input[name='password']", password)
     page.click("button[type='submit']")
     
-    print("Esperando inicio de sesión...")
+    print("Waiting for login...")
     try:
         page.wait_for_url("**/my-account", timeout=60000)
     except Exception:
-        print("\n⚠️  Parece que el inicio de sesión está tardando o apareció un CAPTCHA.")
-        input("    Presiona Enter en esta terminal una vez que hayas iniciado sesión correctamente...")
+        print("\n⚠️  Login seems to be taking a while or CAPTCHA appeared.")
+        input("    Press Enter in this terminal once you have logged in successfully...")
 
     # 2. Navigate to specific card URL
-    print(f"Navegando a: {edit_url}")
+    print(f"Navigating to: {edit_url}")
     page.goto(edit_url)
     
     # 3. Randomize
@@ -325,9 +325,9 @@ def run_icon_mode(page: Page, email: str, password: str, edit_url: str):
     randomize_icons(page)
     
     # 4. Finish
-    print("\n--- ASIGNACIÓN COMPLETADA ---")
-    print("Verifica los iconos y haz click en 'Actualizar/Guardar' si es necesario.")
-    print("\nPresiona Enter para cerrar...")
+    print("\n--- ASSIGNMENT COMPLETED ---")
+    print("Verify icons and click 'Update/Save' if necessary.")
+    print("\nPress Enter to close...")
     input()
 
 
