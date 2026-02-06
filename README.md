@@ -1,62 +1,133 @@
 # Yoto Audio Uploader
 
-This script automates the process of uploading audio files to the Yoto "My Cards" platform. It is specifically designed for personal use to easily upload audiobooks and music for your child's cards.
+CLI helper script to automate uploading audio files to the **Yoto "My Cards"** platform. It is designed for personal use (your own Yoto account) and is now structured so the community can run, extend, and contribute safely.
 
-## Features
+> ⚠️ This is **not** an official Yoto tool. Use at your own risk and always respect Yoto's Terms of Service.
 
-- **Batch Upload:** Uploads files in chunks of 3 to avoid overwhelming the platform.
-- **Format Support:** Supports `.mp3`, `.m4a`, `.wav`, and `.m4b`.
-- **Robustness:** Uses direct file input methods to avoid UI stability issues.
-- **Playlist Management:**
-  - Asks for the **Playlist Name** at the start.
-  - Automatically fills in the name.
-  - **Manual Save:** Pauses at the end so you can verify everything and click "Create" yourself.
-- **Random Icons:** Automatically cycles through every uploaded track and assigns a **random icon** to it, so you don't have to set them manually!
+## What it does
+
+- **Batch upload** audio files to a new playlist ("My Cards")
+- **Chunked uploads** (default: groups of 3 files) to avoid overloading the UI
+- Supports `.mp3`, `.m4a`, `.wav`, `.m4b`
+- Uses Playwright to automate Chromium
+- Optional second phase that assigns **random icons** to each track
+
+All critical actions (creating / saving playlists) are still confirmed manually by you in the browser.
 
 ## Requirements
 
-1.  **Python 3.12+**
-2.  **Playwright:** Required for browser automation.
+- Python **3.12+**
+- [Playwright](https://playwright.dev/) (installed via `pip` + `playwright install`)
+- A Yoto account with access to **My Cards**
 
 ## Installation
 
-1.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-2.  Install Playwright browsers:
-    ```bash
-    playwright install chromium
-    ```
-3.  Configure your credentials:
-    - Copy the example environment file: `cp .env.example .env`
-    - Edit `.env` and enter your Yoto email and password.
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/javiermurillo/yoto-uploader.git
+cd yoto-uploader
+
+pip install -r requirements.txt
+playwright install chromium
+```
+
+### Configure credentials
+
+Create your `.env` from the example:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and set:
+
+```bash
+YOTO_EMAIL=you@example.com
+YOTO_PASSWORD=your-password-here
+```
+
+These values are **not** committed thanks to `.gitignore`.
 
 ## Usage
 
-The process is split into two steps to ensure your files are saved safely.
+The script supports two modes:
 
-### Step 1: Upload & Create
+1. **Upload Mode** – create a new playlist and upload all tracks.
+2. **Icon Mode** – given an existing playlist URL, randomize the icons for all tracks.
 
-1.  Run the script without arguments:
-    ```bash
-    python yoto_uploader.py
-    ```
-2.  Enter the **Playlist Name** and **Audio Folder**.
-3.  The browser will upload your files.
-4.  **Important:** Wait for uploads to finish, then click **Create** manually in the browser to save the playlist.
-5.  **Copy the URL** of the new playlist (e.g., `https://my.yotoplay.com/card/xxxxx/edit`) and press Enter to close.
+### 1. Upload Mode (new playlist)
 
-### Step 2: Assign Random Icons
+```bash
+python yoto_uploader.py
+```
 
-1.  Run the script providing the Playlist URL:
-    ```bash
-    python yoto_uploader.py "https://my.yotoplay.com/card/xxxxx/edit"
-    ```
-2.  The script will log in, navigate to that playlist, and assign unique random icons to all tracks.
-3.  Once done, click **Update** (or Save) manually.
+You will be asked for:
 
-## Important Notes
+- **Playlist name** (e.g. `Matilda – Audiobook`)
+- **Path to audio folder** (e.g. `/Users/you/Audiobooks/Matilda`)
 
-- This script is for **personal use**.
-- If the Yoto platform updates its UI, this script might need adjustments (e.g., selectors for icons or buttons).
+Flow:
+
+1. Script logs in to your Yoto account (using credentials from `.env` or from prompts).
+2. Opens the playlist editor: `https://my.yotoplay.com/card/edit`.
+3. Fills in the playlist name.
+4. Uploads audio files in **chunks of 3**.
+5. Waits for server-side processing to finish (based on the **Create** button becoming enabled).
+6. Stops and gives you instructions to **manually click "Create"** to save the playlist.
+
+You then copy the URL of the edit page (something like `https://my.yotoplay.com/card/XXXXX/edit`) for the next step if you want icons.
+
+### 2. Icon Mode (random icons)
+
+Once you have an existing playlist URL, run:
+
+```bash
+python yoto_uploader.py "https://my.yotoplay.com/card/XXXXX/edit"
+```
+
+The script will:
+
+1. Log in again (same credentials).
+2. Navigate to the edit URL.
+3. Wait until processing is complete.
+4. Iterate over each track and open the icon picker dialog.
+5. Assign a **unique random icon** per track (re-using icons only if it runs out).
+6. Give you time to verify and manually click **Update/Save**.
+
+## Development & Contributing
+
+Contributions are welcome. Some ideas:
+
+- Add CLI flags (e.g. `--chunk-size`, `--headless`, `--skip-icons`).
+- Improve resilience to Yoto UI changes (selectors, retries, better progress handling).
+- Add tests for helper functions (`get_valid_audio_files`, chunking, etc.).
+
+### Project structure
+
+```bash
+yoto-uploader/
+  README.md
+  LICENSE
+  requirements.txt
+  yoto_uploader.py
+  .env.example
+  .gitignore
+```
+
+### Running locally
+
+```bash
+python yoto_uploader.py                    # upload mode
+python yoto_uploader.py "<playlist-url>"   # icon mode
+```
+
+## Safety & Terms
+
+- This tool uses browser automation (Playwright) to control your own Yoto session.
+- You are responsible for how you use it; do not spam or violate Yoto's Terms of Service.
+- If Yoto changes their UI, selectors may break and require an update.
+
+## License
+
+This project is licensed under the **MIT License**. See [`LICENSE`](./LICENSE).
