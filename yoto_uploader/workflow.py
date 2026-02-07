@@ -296,9 +296,19 @@ def run_icon_mode(page: Page, email: str, password: str, edit_url: str) -> None:
     
     # Save changes
     print("Saving changes...")
-    if page.is_enabled("button.create-btn"): # It might be "Update" or same selector
-        page.click("button.create-btn")
+    # Click "Update" (or Create/Save)
+    # The button usually has class 'create-btn' but text might vary
+    try:
+        # Prefer specific text if possible, fallback to class
+        if page.is_visible("button:has-text('Update')"):
+            page.click("button:has-text('Update')", force=True)
+        elif page.is_enabled("button.create-btn"):
+            page.click("button.create-btn", force=True)
+        
         page.wait_for_load_state("networkidle")
+    except Exception as e:
+        print(f"Warning: Could not automatically click Update/Save: {e}")
+        print("Please click it manually if needed.")
     
     print("\n✅ Icons updated.")
 
