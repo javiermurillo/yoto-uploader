@@ -59,6 +59,11 @@ def upload(
         "--visible",
         help="Run browser in visible mode (default is headless).",
     ),
+    proxy: Optional[str] = typer.Option(
+        None,
+        "--proxy",
+        help="HTTP Proxy URL (e.g. http://127.0.0.1:8080) for debugging/MITM.",
+    ),
 ):
     """Upload all audio files in a folder into a new Yoto playlist."""
 
@@ -68,7 +73,7 @@ def upload(
     _ = folder
     
     # run_playwright expects 'headless', so visible=True -> headless=False
-    run_playwright(target_url=None, chunk_size=chunk_size, headless=not visible)
+    run_playwright(target_url=None, chunk_size=chunk_size, headless=not visible, proxy_server=proxy)
 
 
 @app.command()
@@ -79,10 +84,15 @@ def icons(
         "--visible",
         help="Run browser in visible mode (default is headless).",
     ),
+    proxy: Optional[str] = typer.Option(
+        None,
+        "--proxy",
+        help="HTTP Proxy URL (e.g. http://127.0.0.1:8080) for debugging/MITM.",
+    ),
 ):
     """Randomize icons for tracks in an existing playlist."""
 
-    run_playwright(target_url=url, headless=not visible)
+    run_playwright(target_url=url, headless=not visible, proxy_server=proxy)
 
 
 def main() -> None:  # pragma: no cover - thin wrapper
