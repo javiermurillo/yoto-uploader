@@ -317,16 +317,28 @@ def run_playwright(
     *,
     target_url: Optional[str] = None,
     chunk_size: int = 3,
-    headless: bool = True,  # Default to TRUE (headless)
+    headless: bool = True,
+    proxy_server: Optional[str] = None,
 ) -> None:
     """Entry point that bootstraps Playwright."""
     
     email, password = get_credentials()
 
     with sync_playwright() as p:
-        print(f"Launching browser (Headless: {headless})...")
-        browser = p.chromium.launch(headless=headless)
-        context = browser.new_context(viewport={"width": 1920, "height": 1080})
+        print(f"Launching browser (Headless: {headless}, Proxy: {proxy_server})...")
+        
+        launch_args = {"headless": headless}
+        if proxy_server:
+            launch_args["proxy"] = {"server": proxy_server}
+            # Ignore HTTPS errors because mitmproxy uses self-signed cert
+            launch_args["args"] = ["--ignore-certificate-errors"]
+
+        browser = p.chromium.launch(**launch_args)
+        
+        context = browser.new_context(
+            viewport={"width": 1920, "height": 1080},
+            ignore_https_errors=True if proxy_server else False
+        )
         page = context.new_page()
 
         try:
