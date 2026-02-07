@@ -37,11 +37,11 @@ def upload_chunk(page: Page, chunk_files, chunk_index: int) -> None:
     time.sleep(10)
 
 
-def wait_and_create(page: Page, timeout: int = 600) -> str:
-    """Wait for processing to finish, then click Create.
+def wait_and_create(page: Page, playlist_name: str, timeout: int = 600) -> str:
+    """Wait for processing to finish, click Create, and retrieve the new playlist ID.
 
-    Returns:
-        The URL of the created playlist (edit page).
+    Since Yoto redirects to the library page instead of the edit page, we intercept
+    the API call to `/content/mine` to find our new playlist ID.
     """
     start_time = time.time()
     
@@ -57,26 +57,42 @@ def wait_and_create(page: Page, timeout: int = 600) -> str:
             if page.is_enabled("button.create-btn"):
                 progress.update(task, description="Processing complete. Creating playlist...")
                 
-                # Capture current URL (creation page)
-                initial_url = page.url
-
-                # Click Create
-                # Force click ensures we don't get blocked by overlays
-                page.click("button.create-btn", force=True)
+                # Setup response listener BEFORE clicking
+                # We want to catch the response that lists all cards
+                with page.expect_response("**/content/mine", timeout=60000) as response_info:
+                    page.click("button.create-btn", force=True)
                 
-                progress.update(task, description="Waiting for save confirmation...")
+                progress.update(task, description="Waiting for playlist data...")
+                
+                # Get the JSON from the intercepted response
+                response = response_info.value
+                if not response.ok:
+                    raise RuntimeError(f"API request failed: {response.status} {response.url}")
+                
+                data = response.json()
+                # The API usually returns a list or a wrapped list.
+                # Adjust based on inspection, usually it's a list of card objects.
+                # If wrapped, it might be data['data'] etc. Assuming list for now based on standard REST.
+                cards = data if isinstance(data, list) else data.get("cards", [])
 
-                # Wait for URL to change to the specific card edit URL
-                # format: .../card/{id}/edit
-                try:
-                    # We wait until the URL is DIFFERENT from the creation URL
-                    page.wait_for_url(lambda url: url != initial_url and "/edit" in url, timeout=45000)
-                    progress.stop()
-                    return page.url
-                except Exception as e:
-                    print(f"\nWarning: URL did not change after clicking Create. Current: {page.url}")
-                    # If it failed, maybe we return the current URL so the user can check
-                    return page.url
+                # Find our card by name (most recent first ideally, but name match is safer)
+                # Sort by createdAt if available to get the newest one with that name?
+                # For now, precise name match.
+                target_card = next(
+                    (c for c in cards if c.get("name", "").strip() == playlist_name.strip()), 
+                    None
+                )
+
+                if target_card:
+                    card_id = target_card.get("id")
+                    if card_id:
+                        progress.stop()
+                        return f"https://my.yotoplay.com/card/{card_id}/edit"
+                
+                progress.stop()
+                print(f"Warning: Could not find card named '{playlist_name}' in API response.")
+                # Fallback: return the list URL so they can at least see it
+                return "https://my.yotoplay.com/my-cards"
 
             # Heuristic check for status text
             try:
@@ -247,7 +263,7 @@ def run_upload_mode(page: Page, email: str, password: str, *, chunk_size: int = 
             progress.update(task, advance=1)
 
     # Wait and Auto-Create
-    created_url = wait_and_create(page)
+    created_url = wait_and_create(page, playlist_name)
     print(f"\n✅ Playlist created successfully!")
     print(f"Edit URL: {created_url}")
     print("You can use this URL to run the 'icons' command if you want to randomize icons later.")
