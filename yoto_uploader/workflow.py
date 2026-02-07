@@ -74,8 +74,9 @@ def wait_and_create(page: Page, playlist_name: str, timeout: int = 600) -> str:
                 cards = data if isinstance(data, list) else data.get("cards", [])
 
                 # Find our card by TITLE (not name)
+                # Use case-insensitive matching to be robust
                 target_card = next(
-                    (c for c in cards if c.get("title", "").strip() == playlist_name.strip()), 
+                    (c for c in cards if c.get("title", "").strip().lower() == playlist_name.strip().lower()), 
                     None
                 )
 
