@@ -53,33 +53,36 @@ def upload(
         min=1,
         help="Number of files to upload per batch.",
     ),
-    headless: bool = typer.Option(
+    # INVERTED LOGIC: Default is headless=True (hidden). Flag is --visible.
+    visible: bool = typer.Option(
         False,
-        "--headless/--no-headless",
-        help="Run browser in headless mode.",
+        "--visible",
+        help="Run browser in visible mode (default is headless).",
     ),
 ):
     """Upload all audio files in a folder into a new Yoto playlist."""
 
     # For now we keep prompts inside the workflow; in future we can wire
     # these options to skip interactive inputs.
-    _ = playlist  # not yet used directly
+    _ = playlist
     _ = folder
-    run_playwright(target_url=None, chunk_size=chunk_size, headless=headless)
+    
+    # run_playwright expects 'headless', so visible=True -> headless=False
+    run_playwright(target_url=None, chunk_size=chunk_size, headless=not visible)
 
 
 @app.command()
 def icons(
     url: str = typer.Argument(..., help="Yoto playlist edit URL (…/card/XXXXX/edit)."),
-    headless: bool = typer.Option(
+    visible: bool = typer.Option(
         False,
-        "--headless/--no-headless",
-        help="Run browser in headless mode.",
+        "--visible",
+        help="Run browser in visible mode (default is headless).",
     ),
 ):
     """Randomize icons for tracks in an existing playlist."""
 
-    run_playwright(target_url=url, headless=headless)
+    run_playwright(target_url=url, headless=not visible)
 
 
 def main() -> None:  # pragma: no cover - thin wrapper
