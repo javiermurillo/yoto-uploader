@@ -57,21 +57,26 @@ def wait_and_create(page: Page, timeout: int = 600) -> str:
             if page.is_enabled("button.create-btn"):
                 progress.update(task, description="Processing complete. Creating playlist...")
                 
+                # Capture current URL (creation page)
+                initial_url = page.url
+
                 # Click Create
-                page.click("button.create-btn")
+                # Force click ensures we don't get blocked by overlays
+                page.click("button.create-btn", force=True)
                 
-                # Wait for navigation or success state. 
-                # Usually it redirects to the Edit page of the new card, or refreshes.
-                # We'll wait for the URL to contain '/edit' which confirms creation.
+                progress.update(task, description="Waiting for save confirmation...")
+
+                # Wait for URL to change to the specific card edit URL
+                # format: .../card/{id}/edit
                 try:
-                    page.wait_for_url("**/edit", timeout=30000)
+                    # We wait until the URL is DIFFERENT from the creation URL
+                    page.wait_for_url(lambda url: url != initial_url and "/edit" in url, timeout=45000)
                     progress.stop()
                     return page.url
-                except Exception:
-                    # If URL didn't change, maybe we need to click Update? 
-                    # If this was a new card, it should be Create.
-                    pass
-                return page.url
+                except Exception as e:
+                    print(f"\nWarning: URL did not change after clicking Create. Current: {page.url}")
+                    # If it failed, maybe we return the current URL so the user can check
+                    return page.url
 
             # Heuristic check for status text
             try:
