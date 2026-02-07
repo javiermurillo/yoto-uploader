@@ -236,7 +236,9 @@ def run_upload_mode(page: Page, email: str, password: str, *, chunk_size: int = 
     try:
         page.wait_for_url("**/my-account", timeout=60000)
     except PlaywrightTimeout:
-        print("\n⚠️  Login taking too long. If CAPTCHA appeared, solve it (requires visible mode).")
+        print("\n⚠️  Login taking too long. Possible CAPTCHA?")
+        print("    Try running in visible mode to solve it manually:")
+        print(f"\n    python3 -m yoto_uploader upload --visible\n")
         return
 
     print("Navigating to Playlist Editor...")
@@ -281,7 +283,9 @@ def run_icon_mode(page: Page, email: str, password: str, edit_url: str) -> None:
     try:
         page.wait_for_url("**/my-account", timeout=60000)
     except PlaywrightTimeout:
-        print("Login failed or timed out.")
+        print("\n⚠️  Login taking too long. Possible CAPTCHA?")
+        print("    Try running in visible mode to solve it manually:")
+        print(f"\n    python3 -m yoto_uploader icons \"{edit_url}\" --visible\n")
         return
 
     print(f"Navigating to: {edit_url}")
