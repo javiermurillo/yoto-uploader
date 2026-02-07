@@ -6,13 +6,83 @@ on a Playwright Page instance. It uses 'rich' for progress reporting.
 
 import sys
 import time
-from typing import Optional
+import json
+from typing import Optional, Dict, Any
 
 from playwright.sync_api import Page, sync_playwright
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TimeRemainingColumn
 
 from .auth import get_credentials
 from .files import chunk_list, get_valid_audio_files
+
+
+# ------------------- API Sniffer -------------------
+
+API_LOG = []
+CAPTURED_TOKEN = None
+CAPTURED_USER_ID = None
+
+def api_sniffer(request):
+    """Intercepts requests to log API usage and capture tokens."""
+    global CAPTURED_TOKEN, CAPTURED_USER_ID
+    
+    url = request.url
+    method = request.method
+    resource_type = request.resource_type
+    
+    # Filter out static assets to reduce noise
+    if resource_type in ["image", "stylesheet", "font", "script"]:
+        return
+
+    # Capture Token from ANY request to yotoplay
+    if "yotoplay.com" in url and not CAPTURED_TOKEN:
+        headers = request.headers
+        if "authorization" in headers:
+            auth = headers["authorization"]
+            if auth.startswith("Bearer "):
+                CAPTURED_TOKEN = auth
+                print(f"\n[SNIFFER] 🔑 Captured Access Token! ({auth[:15]}...)")
+
+    # Log interesting mutations or uploads
+    # We want to see WHERE files are going (likely PUT/POST to a blob storage or API)
+    if method in ["POST", "PUT", "PATCH", "DELETE"]:
+        try:
+            # Try to parse JSON if possible
+            post_data = request.post_data_json
+        except:
+            # If not JSON (e.g. binary/multipart), just get the size or a snippet
+            data = request.post_data
+            post_data = f"<binary data: {len(data)} bytes>" if data else None
+        
+        entry = {
+            "method": method,
+            "url": url,
+            "headers": dict(request.headers),
+            "data": post_data
+        }
+        API_LOG.append(entry)
+        print(f"[SNIFFER] 📸 Logged {method} {url}")
+
+def save_api_log():
+    """Saves the captured API log to a file."""
+    if not API_LOG:
+        return
+    
+    filename = "api_traffic_dump.json"
+    print(f"\n[SNIFFER] 💾 Saving {len(API_LOG)} API requests to {filename}...")
+    
+    output = {
+        "auth": {
+            "token": CAPTURED_TOKEN,
+            "user_id": CAPTURED_USER_ID # We might parse this from JWT later
+        },
+        "requests": API_LOG
+    }
+    
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, default=str)
+    
+    print("[SNIFFER] ✅ Dump saved. Please share this file (scrub token/email if needed) to implement the API client.")
 
 
 # ------------------- Low-level helpers -------------------
@@ -58,19 +128,16 @@ def wait_and_create(page: Page, playlist_name: str, timeout: int = 600) -> str:
                 progress.update(task, description="Processing complete. Creating playlist...")
                 
                 # Setup response listener BEFORE clicking
-                # We want to catch the response that lists all cards
                 with page.expect_response("**/content/mine", timeout=60000) as response_info:
                     page.click("button.create-btn", force=True)
                 
                 progress.update(task, description="Waiting for playlist data...")
                 
-                # Get the JSON from the intercepted response
                 response = response_info.value
                 if not response.ok:
                     raise RuntimeError(f"API request failed: {response.status} {response.url}")
                 
                 data = response.json()
-                # The API returns {"cards": [...]}
                 cards = data if isinstance(data, list) else data.get("cards", [])
 
                 # Find our card by TITLE (not name)
@@ -296,8 +363,6 @@ def run_icon_mode(page: Page, email: str, password: str, edit_url: str) -> None:
     
     # Save changes
     print("Saving changes...")
-    # Click "Update" (or Create/Save)
-    # The button usually has class 'create-btn' but text might vary
     try:
         # Prefer specific text if possible, fallback to class
         if page.is_visible("button:has-text('Update')"):
@@ -328,6 +393,9 @@ def run_playwright(
         browser = p.chromium.launch(headless=headless)
         context = browser.new_context(viewport={"width": 1920, "height": 1080})
         page = context.new_page()
+        
+        # --- ATTACH SNIFFER ---
+        page.on("request", api_sniffer)
 
         try:
             if target_url:
@@ -335,12 +403,11 @@ def run_playwright(
             else:
                 run_upload_mode(page, email, password, chunk_size=chunk_size)
         finally:
+            save_api_log() # Dump log on exit
             browser.close()
 
 
 def main() -> None:
     """Legacy entry point."""
     target_url = sys.argv[1] if len(sys.argv) > 1 else None
-    # For legacy script usage, we default to VISIBLE to match old behavior?
-    # Or match new default? Let's match new default (headless) but maybe print a note.
     run_playwright(target_url=target_url, headless=True)
