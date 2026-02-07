@@ -234,6 +234,7 @@ def randomize_icons(page: Page) -> None:
                         if ico.get_attribute("src") not in used_icon_srcs
                     ]
                     
+                    # Recycle if exhausted
                     if not valid_opts:
                         used_icon_srcs.clear()
                         valid_opts = [
@@ -249,11 +250,12 @@ def randomize_icons(page: Page) -> None:
                 else:
                     page.keyboard.press("Escape")
 
-                time.sleep(1.0) 
+                time.sleep(1.0) # Short pause between icons
                 progress.update(task, advance=1)
 
             except Exception as e:
                 print(f"Failed to update icon {i+1}: {e}")
+                # Try recovery
                 try:
                     if page.is_visible("div[role='dialog']:has(img.trackIcon)"):
                         page.keyboard.press("Escape")
