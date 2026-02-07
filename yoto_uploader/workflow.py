@@ -70,28 +70,23 @@ def wait_and_create(page: Page, playlist_name: str, timeout: int = 600) -> str:
                     raise RuntimeError(f"API request failed: {response.status} {response.url}")
                 
                 data = response.json()
-                # The API usually returns a list or a wrapped list.
-                # Adjust based on inspection, usually it's a list of card objects.
-                # If wrapped, it might be data['data'] etc. Assuming list for now based on standard REST.
+                # The API returns {"cards": [...]}
                 cards = data if isinstance(data, list) else data.get("cards", [])
 
-                # Find our card by name (most recent first ideally, but name match is safer)
-                # Sort by createdAt if available to get the newest one with that name?
-                # For now, precise name match.
+                # Find our card by TITLE (not name)
                 target_card = next(
-                    (c for c in cards if c.get("name", "").strip() == playlist_name.strip()), 
+                    (c for c in cards if c.get("title", "").strip() == playlist_name.strip()), 
                     None
                 )
 
                 if target_card:
-                    card_id = target_card.get("id")
+                    card_id = target_card.get("cardId")  # It is 'cardId', not 'id' based on the JSON sample
                     if card_id:
                         progress.stop()
                         return f"https://my.yotoplay.com/card/{card_id}/edit"
                 
                 progress.stop()
                 print(f"Warning: Could not find card named '{playlist_name}' in API response.")
-                # Fallback: return the list URL so they can at least see it
                 return "https://my.yotoplay.com/my-cards"
 
             # Heuristic check for status text
