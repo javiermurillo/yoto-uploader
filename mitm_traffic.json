@@ -1,0 +1,129 @@
+[
+  {
+    "method": "POST",
+    "url": "https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&json=standard",
+    "headers": {
+      "content-length": "1",
+      "origin": "https://www.google.com",
+      "content-type": "application/x-www-form-urlencoded",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "no-cors",
+      "sec-fetch-dest": "empty",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-US,en;q=0.9",
+      "priority": "u=4, i"
+    },
+    "data_type": "binary",
+    "data_preview": "<binary/text: 1 bytes>"
+  },
+  {
+    "method": "POST",
+    "url": "https://optimizationguide-pa.googleapis.com/v1:GetModels?key=dummytoken",
+    "headers": {
+      "content-length": "967",
+      "content-type": "application/x-protobuf",
+      "x-client-data": "COeRywE=",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "no-cors",
+      "sec-fetch-dest": "empty",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-US,en;q=0.9",
+      "priority": "u=4, i"
+    },
+    "data_type": "binary",
+    "data_preview": "<binary/text: 967 bytes>"
+  },
+  {
+    "method": "POST",
+    "url": "https://login.yotoplay.com/u/login?state=hKFo2SBmWlNZb1daR3g3dDNGbUptTTBqblk2anlmaXUzNEdzWqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIE51dktJZnQ0THZJd1N2VWJFNGxvMW1FUnRCWjBPT3lWo2NpZNkgbTByanh0ZHAyTmRpa3JWaTVnc3Y1aFBNYkt1czRWdzk",
+    "headers": {
+      "content-length": "246",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "origin": "https://login.yotoplay.com",
+      "content-type": "application/x-www-form-urlencoded",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      "sec-fetch-site": "same-origin",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "referer": "https://login.yotoplay.com/u/login?state=hKFo2SBmWlNZb1daR3g3dDNGbUptTTBqblk2anlmaXUzNEdzWqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIE51dktJZnQ0THZJd1N2VWJFNGxvMW1FUnRCWjBPT3lWo2NpZNkgbTByanh0ZHAyTmRpa3JWaTVnc3Y1aFBNYkt1czRWdzk",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-US,en;q=0.9",
+      "cookie": "did=s%3Av0%3A71bc2c67-14ef-4e05-ac88-cf4717d639b2.LWf%2BnkNKRFfe5u0AtYL6v5ypq75r%2FAGRhNj8V0B4xcc, auth0=s%3Av1.gadzZXNzaW9ug6ZoYW5kbGXEQDnv63Qf_zgp0vEomWh06lEs9KKicaMmDLicIerr03T1M4oZPaxLKCCVPrzM2zqYWHZGD4tiQmQHyzONfA0AeBamY29va2llg6dleHBpcmVz1_8nVs0AaYqhA65vcmlnaW5hbE1heEFnZc4PcxQAqHNhbWVTaXRlpG5vbmWkc2JpZJHZIHUyVFU4cGdqd255dVFxb0k5NGx2VUxBLUJwZjVfS0NR.Il0E%2BTV7sJd3%2B%2FDSjF6EBIbTKKuc1gic9w2Qb%2BED8zU, did_compat=s%3Av0%3A71bc2c67-14ef-4e05-ac88-cf4717d639b2.LWf%2BnkNKRFfe5u0AtYL6v5ypq75r%2FAGRhNj8V0B4xcc, auth0_compat=s%3Av1.gadzZXNzaW9ug6ZoYW5kbGXEQDnv63Qf_zgp0vEomWh06lEs9KKicaMmDLicIerr03T1M4oZPaxLKCCVPrzM2zqYWHZGD4tiQmQHyzONfA0AeBamY29va2llg6dleHBpcmVz1_8nVs0AaYqhA65vcmlnaW5hbE1heEFnZc4PcxQAqHNhbWVTaXRlpG5vbmWkc2JpZJHZIHUyVFU4cGdqd255dVFxb0k5NGx2VUxBLUJwZjVfS0NR.Il0E%2BTV7sJd3%2B%2FDSjF6EBIbTKKuc1gic9w2Qb%2BED8zU",
+      "priority": "u=0, i"
+    },
+    "data_type": "binary",
+    "data_preview": "<binary/text: 246 bytes>"
+  },
+  {
+    "method": "POST",
+    "url": "https://yoto-usa.myshopify.com/api/2025-04/graphql.json",
+    "headers": {
+      "content-length": "4200",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+      "content-type": "application/json",
+      "x-shopify-storefront-access-token": "a6c077a849e1ab9edfdf451e8f12822f",
+      "sec-ch-ua-mobile": "?0",
+      "accept": "*/*",
+      "origin": "https://us.yotoplay.com",
+      "sec-fetch-site": "cross-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "https://us.yotoplay.com/",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-US,en;q=0.9",
+      "priority": "u=1, i"
+    },
+    "data_type": "json",
+    "data_preview": {
+      "query": "query CustomerByCustomerAccessToken($customerAccessToken: String!) {\n  customer(customerAccessToken: $customerAccessToken) {\n    id\n    firstName\n    lastName\n    acceptsMarketing\n    email\n    phone\n    tags\n    metafields(\n      identifiers: [{key: \"customer_string\", namespace: \"subscriptions\"}, {key: \"subscription_frequency\", namespace: \"club\"}, {key: \"subscription_frequency\", namespace: \"club\"}, {key: \"is_subscribed\", namespace: \"club\"}, {key: \"tier\", namespace: \"club\"}, {key: \"subscribe_to\", namespace: \"club\"}, {key: \"credits\", namespace: \"club\"}, {key: \"legacy\", namespace: \"club\"}, {key: \"legacy_expires_at\", namespace: \"club\"}]\n    ) {\n      namespace\n      key\n      value\n    }\n    orders(first: 100, reverse: true) {\n      edges {\n        node {\n          id\n          orderNumber\n          processedAt\n          shippingAddress {\n            address1\n            address2\n            city\n            company\n            country\n            countryCodeV2\n            formatted\n            formattedArea\n            zip\n            name\n            firstName\n            lastName\n            phone\n            id\n          }\n          subtotalPrice {\n            amount\n          }\n          totalShippingPrice {\n            amount\n          }\n          totalPriceV2 {\n            amount\n          }\n          fulfillmentStatus\n          shippingDiscountAllocations {\n            allocatedAmount {\n              amount\n            }\n          }\n          canceledAt\n          customAttributes {\n            key\n            value\n          }\n          lineItems(first: 100, reverse: true) {\n            edges {\n              node {\n                title\n                discountedTotalPrice {\n                  amount\n                }\n                originalTotalPrice {\n                  amount\n                }\n                variant {\n                  title\n                  imagesm: image {\n                    url(transform: {maxWidth: 300})\n                  }\n                  imagemd: image {\n                    url(transform: {maxWidth: 768})\n                  }\n                  imagelg: image {\n                    url(transform: {maxWidth: 1280})\n                  }\n                  price {\n                    amount\n                  }\n                  product {\n                    id\n                    title\n                    handle\n                    productType\n                    images(first: 10) {\n                      edges {\n                        node {\n                          url(transform: {maxWidth: 1280})\n                          altText\n                        }\n                      }\n                    }\n                    imagesmd: images(first: 10) {\n                      edges {\n                        node {\n                          url(transform: {maxWidth: 768})\n                        }\n                      }\n                    }\n                    imagessm: images(first: 10) {\n                      edges {\n                        node {\n                          url(transform: {maxWidth: 300})\n                          altText\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n    defaultAddress {\n      address1\n      address2\n      city\n      company\n      country\n      countryCodeV2\n      formatted\n      formattedArea\n      zip\n      name\n      firstName\n      lastName\n      phone\n      id\n    }\n    addresses(first: 10, reverse: true) {\n      edges {\n        node {\n          address1\n          address2\n          city\n          company\n          country\n          countryCodeV2\n          formatted\n          formattedArea\n          zip\n          name\n          firstName\n          lastName\n          phone\n          id\n        }\n      }\n    }\n  }\n}",
+      "variables": {
+        "customerAccessToken": "659b22435e6835d4414f5b08915f1dcd"
+      },
+      "operationName": "CustomerByCustomerAccessToken"
+    }
+  },
+  {
+    "method": "PUT",
+    "url": "https://api.yotoplay.com/wishlists/default",
+    "headers": {
+      "content-length": "107",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5FSkZSRGt3UkRrd05FSkROVUU0TnpoRk9UWkZRVEEzTkRReU56YzRSVVl6TmtZeE5qUTBOQSJ9.eyJpc3MiOiJodHRwczovL2xvZ2luLnlvdG9wbGF5LmNvbS8iLCJzdWIiOiJhdXRoMHw2NTVkODllYzQ0MjBiZTljM2U0Y2RkNjAiLCJhdWQiOlsiaHR0cHM6Ly9hcGkueW90b3BsYXkuY29tIiwiaHR0cHM6Ly95b3RvLmV1LmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE3NzA0MzM2NjgsImV4cCI6MTc3MDUyMDA2OCwic2NvcGUiOiJvcGVuaWQgZW1haWwgZmFtaWx5OmRldmljZXM6Y29udHJvbCBmYW1pbHk6ZGV2aWNlczptYW5hZ2UgZmFtaWx5OmRldmljZXM6c2VydmljZSBmYW1pbHk6ZGV2aWNlczp2aWV3IGZhbWlseTpsaWJyYXJ5OmNhcmQtYXVkaW8gZmFtaWx5OmxpYnJhcnk6bGluay1jYXJkIGZhbWlseTpsaWJyYXJ5Om1hbmFnZSBmYW1pbHk6bGlicmFyeTpyZXNvbHZlLWNhcmQgZmFtaWx5OmxpYnJhcnk6c2hhcmUtY2FyZCBmYW1pbHk6bGlicmFyeTp2aWV3IGZhbWlseTptYW5hZ2UgZmFtaWx5OnN1YnNjcmlwdGlvbnM6dmlldyBmYW1pbHk6dXNlcnM6bWFuYWdlIGZhbWlseTp2aWV3IHVzZXI6YWNjb3VudDptYW5hZ2UgdXNlcjpjbHViOm1hbmFnZSB1c2VyOmNvbnRlbnQ6bWFuYWdlIHVzZXI6Y29udGVudDp2aWV3IHVzZXI6aWNvbnM6bWFuYWdlIHVzZXI6bm90aWZpY2F0aW9uczptYW5hZ2UgdXNlcjpzc28gdXNlcjpzdWJzY3JpcHRpb25zOm1hbmFnZSIsImF6cCI6Im0wcmp4dGRwMk5kaWtyVmk1Z3N2NWhQTWJLdXM0Vnc5In0.UHA9d-dSCM0nG-7bsYTC2ubGR9SI3nl6PazT4eBpwezVnWSXJ6Urms3Y4940ehrlgdGGLjZ3PfaDTdxM6Z3dap6dQ_FC_QefH_mIUzwMpJZLNRuKRl6zTm47p7wJe4n0JFlU0eh9T0J-4B2fFTltxt4sE1p76ZAxHN0V-fiAWBDcnUN_LY8dSHgqs5PjtD9v7sXwzx0nL9Unaa4Ceaz6Zntokio1Nhkj1r7byEBF7CBzAo_2vuRfcoKK1Wk6G0IQ452Oq4DKsNyOPc11dyc3CMGNvRfngebBfTiow8blp_B5nmliDaTBrG9JlrBBKGAcadxmjctVOfSCKK2HTSQjcw",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+      "content-type": "application/json",
+      "sec-ch-ua-mobile": "?0",
+      "accept": "*/*",
+      "origin": "https://us.yotoplay.com",
+      "sec-fetch-site": "same-site",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-dest": "empty",
+      "referer": "https://us.yotoplay.com/",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-US,en;q=0.9",
+      "priority": "u=1, i"
+    },
+    "data_type": "json",
+    "data_preview": {
+      "content": {
+        "isPrimary": true,
+        "regions": {
+          "US": {
+            "lastModified": "2025-08-10T17:02:53.455-04:00",
+            "items": []
+          }
+        }
+      }
+    }
+  }
+]

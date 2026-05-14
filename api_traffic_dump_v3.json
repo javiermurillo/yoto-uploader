@@ -1,0 +1,329 @@
+{
+  "auth": {
+    "token": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5FSkZSRGt3UkRrd05FSkROVUU0TnpoRk9UWkZRVEEzTkRReU56YzRSVVl6TmtZeE5qUTBOQSJ9.eyJpc3MiOiJodHRwczovL2xvZ2luLnlvdG9wbGF5LmNvbS8iLCJzdWIiOiJhdXRoMHw2NTVkODllYzQ0MjBiZTljM2U0Y2RkNjAiLCJhdWQiOlsiaHR0cHM6Ly9hcGkueW90b3BsYXkuY29tIiwiaHR0cHM6Ly95b3RvLmV1LmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE3NzA0MzMxMjMsImV4cCI6MTc3MDUxOTUyMywic2NvcGUiOiJvcGVuaWQgZW1haWwgZmFtaWx5OmRldmljZXM6Y29udHJvbCBmYW1pbHk6ZGV2aWNlczptYW5hZ2UgZmFtaWx5OmRldmljZXM6c2VydmljZSBmYW1pbHk6ZGV2aWNlczp2aWV3IGZhbWlseTpsaWJyYXJ5OmNhcmQtYXVkaW8gZmFtaWx5OmxpYnJhcnk6bGluay1jYXJkIGZhbWlseTpsaWJyYXJ5Om1hbmFnZSBmYW1pbHk6bGlicmFyeTpyZXNvbHZlLWNhcmQgZmFtaWx5OmxpYnJhcnk6c2hhcmUtY2FyZCBmYW1pbHk6bGlicmFyeTp2aWV3IGZhbWlseTptYW5hZ2UgZmFtaWx5OnN1YnNjcmlwdGlvbnM6dmlldyBmYW1pbHk6dXNlcnM6bWFuYWdlIGZhbWlseTp2aWV3IHVzZXI6YWNjb3VudDptYW5hZ2UgdXNlcjpjbHViOm1hbmFnZSB1c2VyOmNvbnRlbnQ6bWFuYWdlIHVzZXI6Y29udGVudDp2aWV3IHVzZXI6aWNvbnM6bWFuYWdlIHVzZXI6bm90aWZpY2F0aW9uczptYW5hZ2UgdXNlcjpzc28gdXNlcjpzdWJzY3JpcHRpb25zOm1hbmFnZSIsImF6cCI6Im0wcmp4dGRwMk5kaWtyVmk1Z3N2NWhQTWJLdXM0Vnc5In0.lHjwE8j-FEEg2dWI1beol2-2wMVXCN9pvBepSedREcZeaBo6aAGFbeM18IyRWkM-edPMXrIRzmKl20dMimf-CfIYaqlg7yXiacRAGOVe9HwlgKc4T76sPgMYGJpha8pi6GSBDUNNn4LWa_sXDmBYAvih-uF5giB7HxkNR3FhzR2louuu_XVI1liyvzZluHxePrBVQLkXYm2b4_3D4z44-C6QHFnwM678PrEoEeYaGX8_z4KAVp2hOtAeB-M-ljYCvMmcKuToE3Lan4FxNPOQVXJ0U5FYqua32BitxXO55rxx_acUQ5VILnqeHbp9UmLkJaFTkC3D7xVo-I0azoOvAA",
+    "user_id": null
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "url": "https://login.yotoplay.com/u/login?state=hKFo2SBtNHI2ZXRzYVdfeDR4aDNkTkE1N0RGbkFsdmNKUVJQSaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDhXbUlCQzNNcDJXZzFXUzBJNGtSVmRqMXFudmh2Z0I2o2NpZNkgbTByanh0ZHAyTmRpa3JWaTVnc3Y1aFBNYkt1czRWdzk",
+      "headers": {
+        "content-type": "application/x-www-form-urlencoded",
+        "origin": "https://login.yotoplay.com",
+        "referer": "https://login.yotoplay.com/u/login?state=hKFo2SBtNHI2ZXRzYVdfeDR4aDNkTkE1N0RGbkFsdmNKUVJQSaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDhXbUlCQzNNcDJXZzFXUzBJNGtSVmRqMXFudmh2Z0I2o2NpZNkgbTByanh0ZHAyTmRpa3JWaTVnc3Y1aFBNYkt1czRWdzk",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\""
+      },
+      "data": {
+        "state": "hKFo2SBtNHI2ZXRzYVdfeDR4aDNkTkE1N0RGbkFsdmNKUVJQSaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDhXbUlCQzNNcDJXZzFXUzBJNGtSVmRqMXFudmh2Z0I2o2NpZNkgbTByanh0ZHAyTmRpa3JWaTVnc3Y1aFBNYkt1czRWdzk",
+        "username": "valentino@murilloangeles.com",
+        "password": "BkAWQqAh7fchEn3"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://yoto-usa.myshopify.com/api/2025-04/graphql.json",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://us.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "x-shopify-storefront-access-token": "a6c077a849e1ab9edfdf451e8f12822f",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": {
+        "query": "query CustomerByCustomerAccessToken($customerAccessToken: String!) {\n  customer(customerAccessToken: $customerAccessToken) {\n    id\n    firstName\n    lastName\n    acceptsMarketing\n    email\n    phone\n    tags\n    metafields(\n      identifiers: [{key: \"customer_string\", namespace: \"subscriptions\"}, {key: \"subscription_frequency\", namespace: \"club\"}, {key: \"subscription_frequency\", namespace: \"club\"}, {key: \"is_subscribed\", namespace: \"club\"}, {key: \"tier\", namespace: \"club\"}, {key: \"subscribe_to\", namespace: \"club\"}, {key: \"credits\", namespace: \"club\"}, {key: \"legacy\", namespace: \"club\"}, {key: \"legacy_expires_at\", namespace: \"club\"}]\n    ) {\n      namespace\n      key\n      value\n    }\n    orders(first: 100, reverse: true) {\n      edges {\n        node {\n          id\n          orderNumber\n          processedAt\n          shippingAddress {\n            address1\n            address2\n            city\n            company\n            country\n            countryCodeV2\n            formatted\n            formattedArea\n            zip\n            name\n            firstName\n            lastName\n            phone\n            id\n          }\n          subtotalPrice {\n            amount\n          }\n          totalShippingPrice {\n            amount\n          }\n          totalPriceV2 {\n            amount\n          }\n          fulfillmentStatus\n          shippingDiscountAllocations {\n            allocatedAmount {\n              amount\n            }\n          }\n          canceledAt\n          customAttributes {\n            key\n            value\n          }\n          lineItems(first: 100, reverse: true) {\n            edges {\n              node {\n                title\n                discountedTotalPrice {\n                  amount\n                }\n                originalTotalPrice {\n                  amount\n                }\n                variant {\n                  title\n                  imagesm: image {\n                    url(transform: {maxWidth: 300})\n                  }\n                  imagemd: image {\n                    url(transform: {maxWidth: 768})\n                  }\n                  imagelg: image {\n                    url(transform: {maxWidth: 1280})\n                  }\n                  price {\n                    amount\n                  }\n                  product {\n                    id\n                    title\n                    handle\n                    productType\n                    images(first: 10) {\n                      edges {\n                        node {\n                          url(transform: {maxWidth: 1280})\n                          altText\n                        }\n                      }\n                    }\n                    imagesmd: images(first: 10) {\n                      edges {\n                        node {\n                          url(transform: {maxWidth: 768})\n                        }\n                      }\n                    }\n                    imagessm: images(first: 10) {\n                      edges {\n                        node {\n                          url(transform: {maxWidth: 300})\n                          altText\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n    defaultAddress {\n      address1\n      address2\n      city\n      company\n      country\n      countryCodeV2\n      formatted\n      formattedArea\n      zip\n      name\n      firstName\n      lastName\n      phone\n      id\n    }\n    addresses(first: 10, reverse: true) {\n      edges {\n        node {\n          address1\n          address2\n          city\n          company\n          country\n          countryCodeV2\n          formatted\n          formattedArea\n          zip\n          name\n          firstName\n          lastName\n          phone\n          id\n        }\n      }\n    }\n  }\n}",
+        "variables": {
+          "customerAccessToken": "659b22435e6835d4414f5b08915f1dcd"
+        },
+        "operationName": "CustomerByCustomerAccessToken"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://log.cookieyes.com/api/v1/log",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://us.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundarynvFkL9q1dBgjLMwG",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": "<binary data: 564 bytes>"
+    },
+    {
+      "method": "POST",
+      "url": "https://refer.yotoplay.com/zones/global_footer",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://us.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": {
+        "::headers.Accept": "text/javascript",
+        "::headers.X-Extole-App": "javascript_sdk",
+        "referer": "us.yotoplay.com",
+        "locale": "EN",
+        "element_id": "extole_zone_global_footer",
+        "zone_id": "838249417.1"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://refer.yotoplay.com/zones/my_account_dashboard",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://us.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": {
+        "::headers.Accept": "text/javascript",
+        "::headers.X-Extole-App": "javascript_sdk",
+        "::headers.Authorization": "Bearer BNNFRFQ3QQNBF2PPEQ8KPFS58P",
+        "referer": "us.yotoplay.com",
+        "locale": "EN",
+        "element_id": "extole_zone_my_account_dashboard",
+        "zone_id": "838249417.2"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://refer.yotoplay.com/zones/my_account_dashboard",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://us.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": {
+        "::headers.Accept": "text/javascript",
+        "::headers.X-Extole-App": "javascript_sdk",
+        "::headers.Authorization": "Bearer BNNFRFQ3QQNBF2PPEQ8KPFS58P",
+        "referer": "us.yotoplay.com",
+        "locale": "EN",
+        "element_id": "extole_zone_my_account_dashboard",
+        "zone_id": "838249417.3"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://api.yotoplay.com/wishlists",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5FSkZSRGt3UkRrd05FSkROVUU0TnpoRk9UWkZRVEEzTkRReU56YzRSVVl6TmtZeE5qUTBOQSJ9.eyJpc3MiOiJodHRwczovL2xvZ2luLnlvdG9wbGF5LmNvbS8iLCJzdWIiOiJhdXRoMHw2NTVkODllYzQ0MjBiZTljM2U0Y2RkNjAiLCJhdWQiOlsiaHR0cHM6Ly9hcGkueW90b3BsYXkuY29tIiwiaHR0cHM6Ly95b3RvLmV1LmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE3NzA0MzMxMjMsImV4cCI6MTc3MDUxOTUyMywic2NvcGUiOiJvcGVuaWQgZW1haWwgZmFtaWx5OmRldmljZXM6Y29udHJvbCBmYW1pbHk6ZGV2aWNlczptYW5hZ2UgZmFtaWx5OmRldmljZXM6c2VydmljZSBmYW1pbHk6ZGV2aWNlczp2aWV3IGZhbWlseTpsaWJyYXJ5OmNhcmQtYXVkaW8gZmFtaWx5OmxpYnJhcnk6bGluay1jYXJkIGZhbWlseTpsaWJyYXJ5Om1hbmFnZSBmYW1pbHk6bGlicmFyeTpyZXNvbHZlLWNhcmQgZmFtaWx5OmxpYnJhcnk6c2hhcmUtY2FyZCBmYW1pbHk6bGlicmFyeTp2aWV3IGZhbWlseTptYW5hZ2UgZmFtaWx5OnN1YnNjcmlwdGlvbnM6dmlldyBmYW1pbHk6dXNlcnM6bWFuYWdlIGZhbWlseTp2aWV3IHVzZXI6YWNjb3VudDptYW5hZ2UgdXNlcjpjbHViOm1hbmFnZSB1c2VyOmNvbnRlbnQ6bWFuYWdlIHVzZXI6Y29udGVudDp2aWV3IHVzZXI6aWNvbnM6bWFuYWdlIHVzZXI6bm90aWZpY2F0aW9uczptYW5hZ2UgdXNlcjpzc28gdXNlcjpzdWJzY3JpcHRpb25zOm1hbmFnZSIsImF6cCI6Im0wcmp4dGRwMk5kaWtyVmk1Z3N2NWhQTWJLdXM0Vnc5In0.lHjwE8j-FEEg2dWI1beol2-2wMVXCN9pvBepSedREcZeaBo6aAGFbeM18IyRWkM-edPMXrIRzmKl20dMimf-CfIYaqlg7yXiacRAGOVe9HwlgKc4T76sPgMYGJpha8pi6GSBDUNNn4LWa_sXDmBYAvih-uF5giB7HxkNR3FhzR2louuu_XVI1liyvzZluHxePrBVQLkXYm2b4_3D4z44-C6QHFnwM678PrEoEeYaGX8_z4KAVp2hOtAeB-M-ljYCvMmcKuToE3Lan4FxNPOQVXJ0U5FYqua32BitxXO55rxx_acUQ5VILnqeHbp9UmLkJaFTkC3D7xVo-I0azoOvAA",
+        "referer": "https://us.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": {
+        "content": {
+          "isPrimary": true,
+          "regions": {
+            "US": {
+              "lastModified": "2026-02-06T21:58:45.926-05:00",
+              "items": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://www.google-analytics.com/j/collect?v=1&_v=j102&a=1724843261&t=pageview&_s=1&dl=https%3A%2F%2Fmy.yotoplay.com%2Fcard%2Fedit&dp=%2Fcard%2Fedit&ul=en-us&dt=Yoto%20-%20Add%20a%20playlist&sr=1920x1080&vp=1920x1080&_u=IEBAAEABAAAAACAAI~&jid=49140396&gjid=1678908928&cid=684718407.1770433127&tid=UA-104706573-2&_gid=822317784.1770433127&_r=1&_slc=1&z=454623822",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://my.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "text/plain",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": null
+    },
+    {
+      "method": "POST",
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-N0H03RB109&gtm=45je6250h2v9136103182za20g&_p=1770433127132&_gaz=1&gcd=13l3l3l3l2l1&npa=0&dma=0&ul=en-us&sr=1920x1080&cid=684718407.1770433127&ir=1&uaa=arm&uab=64&uafvl=Chromium%3B129.0.6668.29%7CNot%253DA%253FBrand%3B8.0.0.0&uamb=0&uam=&uap=macOS&uapv=26.2.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EBAIAGA&_s=1&tag_exp=103116026~103200004~104527907~104528501~104684208~104684211~115938466~115938469~116185181~116185182~116988315&dl=https%3A%2F%2Fmy.yotoplay.com%2Fcard%2Fedit&dp=%2Fcard%2Fedit&dt=Yoto%20-%20Add%20a%20playlist&sid=1770433127&sct=1&seg=0&_tu=wAQ&en=page_view&_fv=1&_ss=1&_ee=1&tfd=1429",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://my.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": null
+    },
+    {
+      "method": "POST",
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-N0H03RB109&cid=684718407.1770433127&gtm=45je6250h2v9136103182za20g&aip=1&dma=0&gcd=13l3l3l3l2l1&npa=0&frm=0&tag_exp=103116026~103200004~104527907~104528501~104684208~104684211~115938466~115938469~116185181~116185182~116988315",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://my.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": null
+    },
+    {
+      "method": "POST",
+      "url": "https://www.google-analytics.com/j/collect?v=1&_v=j102&a=1206262811&t=pageview&_s=1&dl=https%3A%2F%2Fmy.yotoplay.com%2Fcallback%3FreturnUrl%3D%2Fcard%2Fedit&dp=%2Fcallback%3FreturnUrl%3D%2Fcard%2Fedit&ul=en-us&dt=Yoto&sr=1920x1080&vp=1920x1080&_u=AACAAEABAAAAACAAI~&jid=&gjid=&cid=684718407.1770433127&tid=UA-104706573-2&_gid=822317784.1770433127&_slc=1&z=409241808",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://my.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "text/plain",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": null
+    },
+    {
+      "method": "POST",
+      "url": "https://www.google-analytics.com/j/collect?v=1&_v=j102&a=579985780&t=pageview&_s=1&dl=https%3A%2F%2Fmy.yotoplay.com%2Fcard%2Fedit&dp=%2Fcard%2Fedit&ul=en-us&dt=Yoto%20-%20Add%20a%20playlist&sr=1920x1080&vp=1920x1080&_u=AACAAEABAAAAACAAI~&jid=&gjid=&cid=684718407.1770433127&tid=UA-104706573-2&_gid=822317784.1770433127&_slc=1&z=1021292835",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://my.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "content-type": "text/plain",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": null
+    },
+    {
+      "method": "POST",
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-N0H03RB109&gtm=45je6250h2v9136103182za20g&_p=1770433127695&gcd=13l3l3l3l2l1&npa=0&dma=0&ul=en-us&sr=1920x1080&cid=684718407.1770433127&ir=1&uaa=arm&uab=64&uafvl=Chromium%3B129.0.6668.29%7CNot%253DA%253FBrand%3B8.0.0.0&uamb=0&uam=&uap=macOS&uapv=26.2.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EBAIAGQ&_s=1&tag_exp=103116026~103200004~104527907~104528500~104684208~104684211~115616986~115938466~115938468~116185181~116185182~116988315&dl=https%3A%2F%2Fmy.yotoplay.com%2Fcard%2Fedit&dp=%2Fcard%2Fedit&dt=Yoto%20-%20Add%20a%20playlist&sid=1770433127&sct=1&seg=1&_tu=wAQ&en=page_view&_ee=1&tfd=5127",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://my.yotoplay.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "data": null
+    },
+    {
+      "method": "POST",
+      "url": "https://api.yotoplay.com/media/user/icons",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5FSkZSRGt3UkRrd05FSkROVUU0TnpoRk9UWkZRVEEzTkRReU56YzRSVVl6TmtZeE5qUTBOQSJ9.eyJpc3MiOiJodHRwczovL2xvZ2luLnlvdG9wbGF5LmNvbS8iLCJzdWIiOiJhdXRoMHw2NTVkODllYzQ0MjBiZTljM2U0Y2RkNjAiLCJhdWQiOiJodHRwczovL2FwaS55b3RvcGxheS5jb20iLCJpYXQiOjE3NzA0MzMxMjcsImV4cCI6MTc3MDUxOTUyNywic2NvcGUiOiJ1c2VyOmNvbnRlbnQ6dmlldyB1c2VyOmNvbnRlbnQ6bWFuYWdlIGZhbWlseTpkZXZpY2VzOnZpZXcgZmFtaWx5OmRldmljZXM6bWFuYWdlIGZhbWlseTpkZXZpY2VzOmNvbnRyb2wgZmFtaWx5OmRldmljZXM6c2VydmljZSBmYW1pbHk6bGlicmFyeTpjYXJkLWF1ZGlvIGZhbWlseTpsaWJyYXJ5OmxpbmstY2FyZCBmYW1pbHk6bGlicmFyeTptYW5hZ2UgZmFtaWx5OmxpYnJhcnk6cmVzb2x2ZS1jYXJkIGZhbWlseTpsaWJyYXJ5OnNoYXJlLWNhcmQgZmFtaWx5OmxpYnJhcnk6dmlldyBmYW1pbHk6bWFuYWdlIGZhbWlseTpzdWJzY3JpcHRpb25zOnZpZXcgZmFtaWx5OnVzZXJzOm1hbmFnZSBmYW1pbHk6dmlldyB1c2VyOmFjY291bnQ6bWFuYWdlIHVzZXI6Y2x1YjptYW5hZ2UgdXNlcjppY29uczptYW5hZ2UgdXNlcjpub3RpZmljYXRpb25zOm1hbmFnZSB1c2VyOnNzbyB1c2VyOnN1YnNjcmlwdGlvbnM6bWFuYWdlIiwiYXpwIjoiOTB2Nk9GUkIwYktUdHBTQ3FUN2VkTzdybHU5amU4bmIifQ.ILDG9g8I_hSbtnRmVXKd2lQZVqGrX_2-Mk8pwVUBO48aPPtVaTKn7xIVEezQ_gk7Qjfm_DrAiHFrmc9FbW7Vv9gkoPZ2wF2tpBaWMPrzDqp9mhUqJDGV30iYlJCeOA1DDy24CH36twFjICB-p8GNfij2aa5pxKlKe3R_OHwQYlyOgpBxOorv31reBfVi4JSGKgWSpx7jK4eirjO2pV_s8kONDr8c87Q6SaKvPKhj0xI0r4qUMFHvxyvmDVxhJV095wafxlzshj43lZAITou_MbTuql6uBlMwK8X-tf0Ln_5zd9Zik5TgbwSl_2gUJE4H1BQBKpIWIxfIswLkGkHyHA",
+        "referer": "https://my.yotoplay.com/",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json;charset=UTF-8"
+      },
+      "data": {
+        "icons": [
+          {
+            "mediaId": "aUm9i3ex3qqAMYBv-i-O-pYMKuMJGICtR3Vhf289u2Q"
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://api.yotoplay.com/content",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5FSkZSRGt3UkRrd05FSkROVUU0TnpoRk9UWkZRVEEzTkRReU56YzRSVVl6TmtZeE5qUTBOQSJ9.eyJpc3MiOiJodHRwczovL2xvZ2luLnlvdG9wbGF5LmNvbS8iLCJzdWIiOiJhdXRoMHw2NTVkODllYzQ0MjBiZTljM2U0Y2RkNjAiLCJhdWQiOiJodHRwczovL2FwaS55b3RvcGxheS5jb20iLCJpYXQiOjE3NzA0MzMxMjcsImV4cCI6MTc3MDUxOTUyNywic2NvcGUiOiJ1c2VyOmNvbnRlbnQ6dmlldyB1c2VyOmNvbnRlbnQ6bWFuYWdlIGZhbWlseTpkZXZpY2VzOnZpZXcgZmFtaWx5OmRldmljZXM6bWFuYWdlIGZhbWlseTpkZXZpY2VzOmNvbnRyb2wgZmFtaWx5OmRldmljZXM6c2VydmljZSBmYW1pbHk6bGlicmFyeTpjYXJkLWF1ZGlvIGZhbWlseTpsaWJyYXJ5OmxpbmstY2FyZCBmYW1pbHk6bGlicmFyeTptYW5hZ2UgZmFtaWx5OmxpYnJhcnk6cmVzb2x2ZS1jYXJkIGZhbWlseTpsaWJyYXJ5OnNoYXJlLWNhcmQgZmFtaWx5OmxpYnJhcnk6dmlldyBmYW1pbHk6bWFuYWdlIGZhbWlseTpzdWJzY3JpcHRpb25zOnZpZXcgZmFtaWx5OnVzZXJzOm1hbmFnZSBmYW1pbHk6dmlldyB1c2VyOmFjY291bnQ6bWFuYWdlIHVzZXI6Y2x1YjptYW5hZ2UgdXNlcjppY29uczptYW5hZ2UgdXNlcjpub3RpZmljYXRpb25zOm1hbmFnZSB1c2VyOnNzbyB1c2VyOnN1YnNjcmlwdGlvbnM6bWFuYWdlIiwiYXpwIjoiOTB2Nk9GUkIwYktUdHBTQ3FUN2VkTzdybHU5amU4bmIifQ.ILDG9g8I_hSbtnRmVXKd2lQZVqGrX_2-Mk8pwVUBO48aPPtVaTKn7xIVEezQ_gk7Qjfm_DrAiHFrmc9FbW7Vv9gkoPZ2wF2tpBaWMPrzDqp9mhUqJDGV30iYlJCeOA1DDy24CH36twFjICB-p8GNfij2aa5pxKlKe3R_OHwQYlyOgpBxOorv31reBfVi4JSGKgWSpx7jK4eirjO2pV_s8kONDr8c87Q6SaKvPKhj0xI0r4qUMFHvxyvmDVxhJV095wafxlzshj43lZAITou_MbTuql6uBlMwK8X-tf0Ln_5zd9Zik5TgbwSl_2gUJE4H1BQBKpIWIxfIswLkGkHyHA",
+        "referer": "https://my.yotoplay.com/",
+        "sec-ch-ua": "\"Chromium\";v=\"129\", \"Not=A?Brand\";v=\"8\"",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json;charset=UTF-8"
+      },
+      "data": {
+        "content": {
+          "activity": "yoto_Player",
+          "chapters": [
+            {
+              "key": "00",
+              "title": "20 Cap\u00edtulo 20",
+              "overlayLabel": "1",
+              "tracks": [
+                {
+                  "key": "01",
+                  "title": "20 Cap\u00edtulo 20",
+                  "format": "opus",
+                  "trackUrl": "yoto:#MKi8QVB1ljFe0TSQ0J627xOZRM-f779SZIfPegcdt2M",
+                  "type": "audio",
+                  "overlayLabel": "1",
+                  "display": {
+                    "icon16x16": "yoto:#aUm9i3ex3qqAMYBv-i-O-pYMKuMJGICtR3Vhf289u2Q"
+                  },
+                  "duration": 2172,
+                  "fileSize": 25755309,
+                  "channels": "stereo"
+                }
+              ],
+              "display": {
+                "icon16x16": "yoto:#aUm9i3ex3qqAMYBv-i-O-pYMKuMJGICtR3Vhf289u2Q"
+              }
+            },
+            {
+              "key": "01",
+              "title": "21 Cap\u00edtulo 21",
+              "overlayLabel": "2",
+              "tracks": [
+                {
+                  "key": "01",
+                  "title": "21 Cap\u00edtulo 21",
+                  "format": "opus",
+                  "trackUrl": "yoto:#WB6FAkS5TX_yWIvmrhENprd4sSimjm8FLdShglTBnyA",
+                  "type": "audio",
+                  "overlayLabel": "2",
+                  "display": {
+                    "icon16x16": "yoto:#aUm9i3ex3qqAMYBv-i-O-pYMKuMJGICtR3Vhf289u2Q"
+                  },
+                  "duration": 2982,
+                  "fileSize": 36364359,
+                  "channels": "stereo"
+                }
+              ],
+              "display": {
+                "icon16x16": "yoto:#aUm9i3ex3qqAMYBv-i-O-pYMKuMJGICtR3Vhf289u2Q"
+              }
+            }
+          ],
+          "restricted": true,
+          "config": {
+            "onlineOnly": false
+          },
+          "version": "1"
+        },
+        "metadata": {
+          "cover": {
+            "imageL": "https://cdn.yoto.io/myo-cover/star_yellow.gif"
+          },
+          "media": {
+            "duration": 5154,
+            "readableDuration": "1h 25m 54s",
+            "fileSize": 62119668,
+            "readableFileSize": 59.2,
+            "hasStreams": false
+          }
+        },
+        "title": "test playlist"
+      }
+    }
+  ]
+}

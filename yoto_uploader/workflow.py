@@ -199,20 +199,49 @@ def randomize_icons(page: Page) -> None:
 # ------------------- High-level workflows -------------------
 
 
-def run_upload_mode(page: Page, email: str, password: str, *, chunk_size: int = 3) -> None:
+def _clean_path_input(raw: str) -> str:
+    """Normalize a path the user may have pasted with shell-style escaping.
+
+    Drops surrounding quotes and unescapes the common Bash escapes (space,
+    parens, ampersand, quotes) so a tab-completed path from the shell still
+    resolves when pasted into an ``input()`` prompt.
+    """
+    s = raw.strip()
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in ("'", '"'):
+        s = s[1:-1]
+    for ch in (" ", "(", ")", "&", "'", '"'):
+        s = s.replace("\\" + ch, ch)
+    return s
+
+
+def run_upload_mode(
+    page: Page,
+    email: str,
+    password: str,
+    *,
+    chunk_size: int = 3,
+    playlist_name: Optional[str] = None,
+    folder_path: Optional[str] = None,
+) -> None:
     """Upload mode: create a new playlist and upload all tracks."""
-    
+
     from playwright.sync_api import TimeoutError as PlaywrightTimeout
 
     print("\n=== UPLOAD MODE ===")
-    
-    # Inputs (interactive for now)
-    playlist_name = input("Enter playlist name: ").strip()
-    while not playlist_name:
-        playlist_name = input("Enter playlist name: ").strip()
 
-    folder_input = input("Enter path to audio folder: ").strip()
-    folder_input = folder_input.replace("'", "").replace('"', "")
+    if playlist_name:
+        playlist_name = playlist_name.strip()
+        print(f"Playlist name: {playlist_name}")
+    else:
+        playlist_name = input("Enter playlist name: ").strip()
+        while not playlist_name:
+            playlist_name = input("Enter playlist name: ").strip()
+
+    if folder_path:
+        folder_input = _clean_path_input(folder_path)
+        print(f"Audio folder: {folder_input}")
+    else:
+        folder_input = _clean_path_input(input("Enter path to audio folder: "))
     
     try:
         audio_files = get_valid_audio_files(folder_input)
@@ -308,9 +337,11 @@ def run_playwright(
     target_url: Optional[str] = None,
     chunk_size: int = 3,
     headless: bool = True,  # Default to TRUE (headless)
+    playlist_name: Optional[str] = None,
+    folder_path: Optional[str] = None,
 ) -> None:
     """Entry point that bootstraps Playwright."""
-    
+
     email, password = get_credentials()
 
     with sync_playwright() as p:
@@ -323,7 +354,14 @@ def run_playwright(
             if target_url:
                 run_icon_mode(page, email, password, target_url)
             else:
-                run_upload_mode(page, email, password, chunk_size=chunk_size)
+                run_upload_mode(
+                    page,
+                    email,
+                    password,
+                    chunk_size=chunk_size,
+                    playlist_name=playlist_name,
+                    folder_path=folder_path,
+                )
         finally:
             browser.close()
 

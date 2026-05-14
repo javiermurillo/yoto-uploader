@@ -62,13 +62,14 @@ def upload(
 ):
     """Upload all audio files in a folder into a new Yoto playlist."""
 
-    # For now we keep prompts inside the workflow; in future we can wire
-    # these options to skip interactive inputs.
-    _ = playlist
-    _ = folder
-    
     # run_playwright expects 'headless', so visible=True -> headless=False
-    run_playwright(target_url=None, chunk_size=chunk_size, headless=not visible)
+    run_playwright(
+        target_url=None,
+        chunk_size=chunk_size,
+        headless=not visible,
+        playlist_name=playlist or None,
+        folder_path=folder or None,
+    )
 
 
 @app.command()

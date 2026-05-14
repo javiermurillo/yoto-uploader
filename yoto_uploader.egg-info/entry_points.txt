@@ -1,0 +1,2 @@
+[console_scripts]
+yoto-uploader = yoto_uploader.cli:main
