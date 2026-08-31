@@ -27,33 +27,41 @@ def api_sniffer(request):
     global CAPTURED_TOKEN, CAPTURED_USER_ID
     
     url = request.url
-    if "api.yotoplay.com" in url:
+    method = request.method
+    resource_type = request.resource_type
+    
+    # Filter out static assets to reduce noise
+    if resource_type in ["image", "stylesheet", "font", "script"]:
+        return
+
+    # Capture Token from ANY request to yotoplay
+    if "yotoplay.com" in url and not CAPTURED_TOKEN:
         headers = request.headers
-        method = request.method
-        
-        # 1. Capture Auth Token if present
-        if not CAPTURED_TOKEN and "authorization" in headers:
+        if "authorization" in headers:
             auth = headers["authorization"]
             if auth.startswith("Bearer "):
                 CAPTURED_TOKEN = auth
                 print(f"\n[SNIFFER] 🔑 Captured Access Token! ({auth[:15]}...)")
+
+    # Log interesting mutations or uploads
+    # We want to see WHERE files are going (likely PUT/POST to a blob storage or API)
+    if method in ["POST", "PUT", "PATCH", "DELETE"]:
+        try:
+            # Try to parse JSON if possible
+            post_data = request.post_data_json
+        except:
+            # If not JSON (e.g. binary/multipart), just get the size or a snippet
+            data = request.post_data
+            post_data = f"<binary data: {len(data)} bytes>" if data else None
         
-        # 2. Log interesting mutations (POST/PUT/PATCH)
-        # We skip OPTIONS and GET to reduce noise, unless it's the user profile
-        if method in ["POST", "PUT", "PATCH", "DELETE"]:
-            try:
-                post_data = request.post_data_json
-            except:
-                post_data = request.post_data
-            
-            entry = {
-                "method": method,
-                "url": url,
-                "headers": dict(headers),
-                "data": post_data
-            }
-            API_LOG.append(entry)
-            print(f"[SNIFFER] 📸 Logged {method} {url.split('.com')[-1]}")
+        entry = {
+            "method": method,
+            "url": url,
+            "headers": dict(request.headers),
+            "data": post_data
+        }
+        API_LOG.append(entry)
+        print(f"[SNIFFER] 📸 Logged {method} {url}")
 
 def save_api_log():
     """Saves the captured API log to a file."""
@@ -226,6 +234,7 @@ def randomize_icons(page: Page) -> None:
                         if ico.get_attribute("src") not in used_icon_srcs
                     ]
                     
+                    # Recycle if exhausted
                     if not valid_opts:
                         used_icon_srcs.clear()
                         valid_opts = [
@@ -241,11 +250,12 @@ def randomize_icons(page: Page) -> None:
                 else:
                     page.keyboard.press("Escape")
 
-                time.sleep(1.0) 
+                time.sleep(1.0) # Short pause between icons
                 progress.update(task, advance=1)
 
             except Exception as e:
                 print(f"Failed to update icon {i+1}: {e}")
+                # Try recovery
                 try:
                     if page.is_visible("div[role='dialog']:has(img.trackIcon)"):
                         page.keyboard.press("Escape")
